@@ -1,8 +1,8 @@
 'use client'
 
+import { memo, useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { RoundedBox, Text } from '@react-three/drei'
-import { useRef, useState } from 'react'
 import * as THREE from 'three'
 
 type Card3DProps = {
@@ -12,7 +12,7 @@ type Card3DProps = {
   onToggleFlip: () => void
 }
 
-export default function Card3D({
+const Card3D = memo(function Card3D({
   open,
   flipped,
   onToggleOpen,
@@ -22,6 +22,8 @@ export default function Card3D({
   const [hovered, setHovered] = useState(false)
 
   useFrame((state) => {
+    if (!cardRef.current) return
+
     const { x, y } = state.pointer
 
     // Mouse tilt
@@ -31,7 +33,7 @@ export default function Card3D({
     // Flip adds 180° rotation
     const flipRotY = flipped ? Math.PI : 0
 
-    // Smooth rotation
+    // Smooth rotation with lerp
     cardRef.current.rotation.x = THREE.MathUtils.lerp(
       cardRef.current.rotation.x,
       baseRotX,
@@ -71,7 +73,9 @@ export default function Card3D({
   }
 
   return (
-    <group position={[0, -0.1, 0]}>
+    <group
+      position={[0, -0.1, 0]}
+    >
       <RoundedBox
         ref={cardRef}
         args={[3.2, 2.0, 0.12]}
@@ -80,6 +84,8 @@ export default function Card3D({
         onPointerEnter={() => setHovered(true)}
         onPointerLeave={() => setHovered(false)}
         onClick={handleClick}
+        castShadow
+        receiveShadow
       >
         <meshStandardMaterial
           metalness={0.35}
@@ -93,26 +99,60 @@ export default function Card3D({
 
       {/* FRONT SIDE */}
       <group position={[0, 0, 0.12]}>
-        <Text position={[0, 0.35, 0.02]} fontSize={0.22} anchorX="center">
+        <Text
+          position={[0, 0.35, 0.02]}
+          fontSize={0.22}
+          anchorX="center"
+          maxWidth={3}
+          color="#ffffff"
+        >
           Nihad Azzam
         </Text>
-        <Text position={[0, 0.05, 0.02]} fontSize={0.14} anchorX="center">
+        <Text
+          position={[0, 0.05, 0.02]}
+          fontSize={0.14}
+          anchorX="center"
+          maxWidth={3}
+          color="rgba(255, 255, 255, 0.8)"
+        >
           Web Developer • Next.js • 3D
         </Text>
-        <Text position={[0, -0.45, 0.02]} fontSize={0.11} anchorX="center">
+        <Text
+          position={[0, -0.45, 0.02]}
+          fontSize={0.11}
+          anchorX="center"
+          maxWidth={3}
+          color="rgba(255, 255, 255, 0.6)"
+        >
           Click to flip & open
         </Text>
       </group>
 
       {/* BACK SIDE (rotated so it reads correctly when flipped) */}
       <group position={[0, 0, -0.12]} rotation={[0, Math.PI, 0]}>
-        <Text position={[0, 0.25, 0.02]} fontSize={0.18} anchorX="center">
+        <Text
+          position={[0, 0.25, 0.02]}
+          fontSize={0.18}
+          anchorX="center"
+          maxWidth={3}
+          color="#ffffff"
+        >
           Projects
         </Text>
-        <Text position={[0, -0.15, 0.02]} fontSize={0.12} anchorX="center">
+        <Text
+          position={[0, -0.15, 0.02]}
+          fontSize={0.12}
+          anchorX="center"
+          maxWidth={3}
+          color="rgba(255, 255, 255, 0.8)"
+        >
           GitHub • LinkedIn
         </Text>
       </group>
     </group>
   )
-}
+})
+
+Card3D.displayName = 'Card3D'
+
+export default Card3D

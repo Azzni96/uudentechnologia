@@ -17,18 +17,7 @@ export const projects: Project[] = [
       'Interactive 3D portfolio card with realistic lighting, floor, contact shadows, and flip animation.',
     tech: ['Next.js', 'TypeScript', 'React Three Fiber', 'Three.js', 'Drei'],
     links: {
-      demo: '/',
-      repo: 'https://github.com/',
-    },
-  },
-  {
-    id: 'projects-page',
-    title: 'Projects Page (Data-driven)',
-    description:
-      'A typed dataset powers the Projects page. Add/edit items in a single file and the UI updates automatically.',
-    tech: ['Next.js', 'TypeScript'],
-    links: {
-      repo: 'https://github.com/',
+      repo: 'https://github.com/Azzni96/uudentechnologia',
     },
   },
 ]
