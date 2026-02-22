@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 3D-näytöks sovellus
 
-## Getting Started
+Tämä on **Next.js-projekti**, joka on luotu `create-next-app`-työkalulla. Projektin pääominaisuudet:
 
-First, run the development server:
+## 📋 Pääsivun rakenne
+- **3D-näytös** (`Scene`-komponentti) - Lataa dynaamisesti ilman palvelinpuolen renderöintiä
+- **Tietopaneeli** (`InfoPanel`) - Näytetään oikealla puolella
+- **Virhesuoja** (`ErrorBoundary`) - Hallitsee sovelluksen virheet
+
+## 🎨 Ulkoasu
+- Pimeä teema: liukuväri harmaasta mustaan
+- Responsiivinen asettelu (mobiili ja pöytäkone)
+- Täysikorkea näkymä ilman vierityspalkissa
+
+## ⚙️ Toiminta
+- **Avaus/sulkeminen** - Paneeli avautuu ja sulkeutuu
+- **Kääntäminen** - 3D-objektia voidaan kääntää
+- Latausindikattori spinnerinä kun 3D-näytös latautuu
+
+## 🚀 Käyttö
+
+Kehityspalvelimen käynnistäminen:
 
 ```bash
 npm run dev
-# or
+# tai
 yarn dev
-# or
+# tai
 pnpm dev
-# or
+# tai
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Avaa [http://localhost:3000](http://localhost:3000) selaimessa nähdäksesi tuloksen.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Tiedostorakenne
+- `app/page.tsx` - Pääsivu
+- `app/components/` - UI-komponentit (Badge, Button, Scene, jne.)
+- `tailwind.config.ts` - Tyylittelysäännöt
+- `next.config.ts` - Next.js-asetukset
+- `public/` - Staattisen sisällön kansio
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📚 Kehitys
 
-## Learn More
+Voit alkaa muokata sivua muuttamalla `app/page.tsx`-tiedostoa. Sivu päivittyy automaattisesti muokkaamisen yhteydessä.
 
-To learn more about Next.js, take a look at the following resources:
+Lisätietoja Next.js:stä:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js dokumentaatio](https://nextjs.org/docs) - Next.js-ominaisuuksista ja API:sta
+- [Learn Next.js](https://nextjs.org/learn) - interaktiivinen Next.js-opetusohjelma
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔧 Käytetyt tekniologiat
 
-## Deploy on Vercel
+- **Next.js** - React-sovelluskehys
+- **Tailwind CSS** - Utility-first CSS-kehys
+- **Three.js** - 3D-grafiikkakirjasto
+- **TypeScript** - Tyypitty JavaScript
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Julkaiseminen Vercelissa
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Helpoin tapa julkaista Next.js-sovelluksen on käyttää [Vercel-alustaa](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+
+Katso lisätiedot [Next.js-julkaisemisen dokumentaatiosta](https://nextjs.org/docs/app/building-your-application/deploying).
